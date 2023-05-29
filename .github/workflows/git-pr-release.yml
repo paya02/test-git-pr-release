@@ -1,0 +1,24 @@
+name: Create Production Release PR from dev to prd
+on:
+  push:
+    branches:
+      - main
+jobs:
+  gitPrRelease:
+    name: git-pr-release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      - name: git-pr-release
+        uses: bakunyo/git-pr-release-action@master
+        with:
+          args: '--squashed'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_PR_RELEASE_BRANCH_PRODUCTION: prd
+          GIT_PR_RELEASE_BRANCH_STAGING: main
+          GIT_PR_RELEASE_LABELS: "定期リリース"
+          GIT_PR_RELEASE_TEMPLATE: .github/production_release_template.erb
+          TZ: Asia/Tokyo
