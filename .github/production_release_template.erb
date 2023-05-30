@@ -1,4 +1,4 @@
-本番リリース 20XX-XX-XX
+本番リリース <%= (Date.parse('2023-05-29') + (((Date.today - Date.parse('2023-05-29')) / 14).ceil * 14)).to_s %>
 
 ## PRs
 <% pull_requests.each do |pr| -%>
