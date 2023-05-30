@@ -1,6 +1,15 @@
-本番リリース 20XX-XX-XX
+本番リリース <%= find_base_date(Time.now).to_s %>
 
 ## PRs
 <% pull_requests.each do |pr| -%>
 <%= pr.to_checklist_item %>
 <% end -%>
+
+<%
+  def find_base_date(date)
+    start_date = Date.parse('2023-05-29')
+    cycle = ((date - start_date) / 14).ceil
+    base_date = start_date + (cycle * 14)
+    base_date
+  end
+%>
