@@ -1,4 +1,4 @@
-本番リリース <%= def find_base_date(date); Date.parse('2023-05-29') + (((date - Date.parse('2023-05-29')) / 14).ceil * 14); end %>
+本番リリース <%= (Date.parse('2023-05-29') + (((Date.today - Date.parse('2023-05-29')) / 14).ceil * 14)).to_s %>
 
 ## PRs
 <% pull_requests.each do |pr| -%>
